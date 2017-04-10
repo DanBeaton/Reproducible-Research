@@ -91,7 +91,7 @@ ggplot(dfd, aes(steps)) +
   ggtitle("Figure 1")
 ```
 
-![](./PA1_template_files/plot histogram 1-1.png)<!-- -->
+!["PA1_template_files/figure-html/plot histogram 1-1.png"](PA1_template_files/figure-html/plot histogram 1-1.png)<!-- -->
 
 # Calculate the mean and median number of steps taken per day
 
