@@ -1,4 +1,4 @@
-# PA1_template
+# PA1_template REV XX
 DanBeaton  
 3/26/2017  
 
@@ -9,12 +9,17 @@ This assignment analyses the dataset obtained from personal activity monitors.
 Load the dataset into the working directory:
 
 
+```r
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='figure-html/',
+                      warning=FALSE, message=FALSE)
+```
+
 
 ```r
 activity = read.csv("activity.csv", header = T)
 ```
 
-Data was collected at 5 minute intervals spanning the dates 2012-10-01 to 2012-11-30
+Data were collected at 5 minute intervals spanning the dates 2012-10-01 to 2012-11-30
 The dataset is stored in a comma-separated-value (CSV) file and there are a total of 17,568 observations in this dataset.
 
 
@@ -73,13 +78,8 @@ dim(dfd)
 
 ```r
 library(ggplot2)
-```
 
-```
-## Warning: package 'ggplot2' was built under R version 3.2.5
-```
 
-```r
 ggplot(dfd, aes(steps)) +
   geom_histogram(fill = "orchid", alpha = 0.7, color = "grey70", binwidth = 2500) +
   theme(plot.title=element_text(size = 20),
@@ -91,7 +91,7 @@ ggplot(dfd, aes(steps)) +
   ggtitle("Figure 1")
 ```
 
-![](PA1_template_files/figure-html/plot histogram 1-1.png)<!-- -->
+![](figure-html/plot histogram 1-1.png)<!-- -->
 
 # Calculate the mean and median number of steps taken per day
 
@@ -131,13 +131,6 @@ Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interva
 
 ```r
 library(plyr)
-```
-
-```
-## Warning: package 'plyr' was built under R version 3.2.5
-```
-
-```r
 df.ave = ddply(activity, ~interval, summarise, mean = mean(steps, na.rm = T))
 ```
 
@@ -154,7 +147,7 @@ ggplot(df.ave, aes(interval, mean)) +
   ggtitle("Figure 2")
 ```
 
-![](PA1_template_files/figure-html/plot of intervals-1.png)<!-- -->
+![](figure-html/plot of intervals-1.png)<!-- -->
 
 
 
@@ -221,7 +214,7 @@ sum(is.na(activity2$steps))
 
 
 
-#Replot the historgram with the NAs replaced with the mean values
+#Replot the histogram with the NAs replaced with the mean values
 
 
 
@@ -243,7 +236,7 @@ ggplot(dfd2, aes(steps)) +
   ggtitle("Figure 3")
 ```
 
-![](PA1_template_files/figure-html/histogram2 nas imputed as means-1.png)<!-- -->
+![](figure-html/histogram2 nas imputed as means-1.png)<!-- -->
 
 
 
@@ -336,37 +329,7 @@ str(activity)
 # create labels for the weekedays
 
 library(dplyr)
-```
 
-```
-## Warning: package 'dplyr' was built under R version 3.2.5
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:plyr':
-## 
-##     arrange, count, desc, failwith, id, mutate, rename, summarise,
-##     summarize
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 # create a new colum with the levels 'weekday' and 'weekend'
 
 activity = mutate(activity, day = weekdays(date))
@@ -435,5 +398,5 @@ g2.line = ggplot() +
 g2.line
 ```
 
-![](PA1_template_files/figure-html/weekend and weekday plot-1.png)<!-- -->
+![](figure-html/weekend and weekday plot-1.png)<!-- -->
 

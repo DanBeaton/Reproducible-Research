@@ -1,5 +1,5 @@
 ---
-title: "PA1_template"
+title: "PA1_template REV XX"
 author: "DanBeaton"
 date: "3/26/2017"
 output: 
@@ -14,6 +14,10 @@ output:
 This assignment analyses the dataset obtained from personal activity monitors.  
 Load the dataset into the working directory:
 
+```{r global_options}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='figure-html/',
+                      warning=FALSE, message=FALSE)
+```
 
 ```{r, echo=TRUE}
 
@@ -21,7 +25,7 @@ activity = read.csv("activity.csv", header = T)
 
 ```
 
-Data was collected at 5 minute intervals spanning the dates 2012-10-01 to 2012-11-30
+Data were collected at 5 minute intervals spanning the dates 2012-10-01 to 2012-11-30
 The dataset is stored in a comma-separated-value (CSV) file and there are a total of 17,568 observations in this dataset.
 
 
@@ -38,14 +42,15 @@ dim(activity)
 
 
 
-```{r histogram, echo=TRUE}
+```{r aggregate the data to plot a histogram, echo=TRUE}
 
 dfd = aggregate(steps ~ date, data = activity, sum)
 dim(dfd)
 
 ```
 
-```{r plot histogram 1, echo=TRUE}
+```{r plot histogram 1, echo=TRUE, include = TRUE}
+
 library(ggplot2)
 
 
@@ -161,7 +166,7 @@ sum(is.na(activity2$steps))
 
 
 
-#Replot the historgram with the NAs replaced with the mean values
+#Replot the histogram with the NAs replaced with the mean values
 
 
 ```{r calulate NAs imputing as mean , echo=TRUE}
